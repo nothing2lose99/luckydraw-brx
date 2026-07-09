@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lucky Draw</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="overlay"></div>
+        <div class="container">
+            <!-- SLOT MACHINE -->
+            <div class="machine-wrapper">
+                <div class="machine-img-container">
+                    <img src="img/machine10slot2.png" class="machine-img" alt="">
+                    <div class="slot-machine" id="slotMachine">
+                        <!-- JS sẽ sinh 10 slot tại đây -->
+                    </div>
+                </div>
+                <div class="pull-btn-wrap" id="pullBtn" title="Kéo để quay!">
+                    <img src="img/pull-button.png" class="pull-btn-img" alt="">
+                </div>
+            </div>
+            <!-- Người trúng -->
+            <div class="winner">
+                <div id="winnerPhone" class="winner-phone">**********</div>
+                <div class="winner-divider"></div>
+                <div id="winnerName" class="winner-name">Chờ quay...</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Corner Buttons -->
+    <div class="corner-btns">
+        <button id="resetBtn" title="Reset">
+            <img src="img/gold-reset-button.png" class="reset-btn-bg" alt="">
+            <span>RESET</span>
+        </button>
+        <button id="configBtn" class="config-btn" title="Cấu hình danh sách">⚙️</button>
+    </div>
+
+    <!-- Config Modal -->
+    <div id="configModal" class="modal-overlay">
+        <div class="modal-box">
+            <h2 class="modal-title">👥 Danh sách người tham gia</h2>
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="manual">✏️ Nhập thủ công</button>
+                <button class="tab-btn" data-tab="csv">📂 Tải file CSV</button>
+            </div>
+            <div id="tab-manual" class="tab-panel">
+                <p class="hint">Mỗi dòng một người: <code>Tên - Số điện thoại</code></p>
+                <textarea id="manualInput"
+                    placeholder="Nguyễn Văn A - 0908123456&#10;Trần Thị B - 0912345678&#10;Lê Văn C - 0987654321"></textarea>
+            </div>
+            <div id="tab-csv" class="tab-panel hidden">
+                <p class="hint">File CSV: <code>Cột A = Tên</code> &nbsp;|&nbsp; <code>Cột B = Số điện thoại</code></p>
+                <p class="hint" style="margin-top:6px;opacity:.7">Dòng đầu tiên (header) sẽ được bỏ qua tự động nếu
+                    không phải số điện thoại.</p>
+                <div class="csv-actions">
+                    <label class="csv-label" for="csvFile">📂 Chọn file CSV</label>
+                    <input type="file" id="csvFile" accept=".csv" class="csv-input">
+                    <button id="downloadSampleBtn" class="btn-sample">📂 Tải file mẫu</button>
+                </div>
+                <p id="csvStatus" class="csv-status"></p>
+            </div>
+            <p class="count-label">Danh sách hiện tại: <span id="currentCount">0</span> người</p>
+            <div class="modal-actions">
+                <button id="saveConfigBtn" class="btn-save">💾 Lưu danh sách</button>
+                <button id="closeConfigBtn" class="btn-close">✕ Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thư viện -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <!-- Data -->
+    <script src="js/data.js"></script>
+
+    <!-- Slot Machine -->
+    <script src="js/slot.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
